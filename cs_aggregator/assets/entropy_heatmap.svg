@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340">
+  <defs>
+    <linearGradient id="ebg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="eac" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="50%" style="stop-color:#a77de5"/><stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <pattern id="egr" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1a1a3a" stroke-width="0.3"/>
+    </pattern>
+    <filter id="eg"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="900" height="340" fill="url(#ebg)" rx="10"/>
+  <rect width="900" height="340" fill="url(#egr)" rx="10"/>
+  <rect x="1" y="1" width="898" height="338" fill="none" stroke="url(#eac)" stroke-width="1" rx="10" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="40" y="34" font-family="monospace" font-size="14" fill="#5eead4" font-weight="bold" filter="url(#eg)">◆ ENTROPY ANALYZER</text>
+  <text x="250" y="34" font-family="monospace" font-size="11" fill="#e0e0e0">·  6 regions  ·  H=0.45–7.95</text>
+  <text x="510" y="34" font-family="monospace" font-size="11" fill="#555">(0.012s)</text>
+  <line x1="30" y1="46" x2="870" y2="46" stroke="#555" stroke-width="0.5"/>
+
+  <!-- Region type summary -->
+  <text x="60" y="68" font-family="monospace" font-size="11" fill="#5eead4" font-weight="bold">█ code</text>
+  <rect x="130" y="57" width="180" height="12" rx="2" fill="#1a1a3a"/>
+  <rect x="130" y="57" width="108" height="12" rx="2" fill="#5eead4" opacity="0.5"/>
+  <text x="145" y="67" font-family="monospace" font-size="8" fill="#ccc">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░</text>
+  <text x="320" y="67" font-family="monospace" font-size="10" fill="#888">  3 (50%)</text>
+
+  <text x="60" y="86" font-family="monospace" font-size="11" fill="#ff6ec7" font-weight="bold">█ encrypted</text>
+  <rect x="130" y="75" width="180" height="12" rx="2" fill="#1a1a3a"/>
+  <rect x="130" y="75" width="60" height="12" rx="2" fill="#ff6ec7" opacity="0.5"/>
+  <text x="320" y="85" font-family="monospace" font-size="10" fill="#888">  1 (17%)</text>
+
+  <text x="60" y="104" font-family="monospace" font-size="11" fill="#7b8cff" font-weight="bold">▓ data</text>
+  <rect x="130" y="93" width="180" height="12" rx="2" fill="#1a1a3a"/>
+  <rect x="130" y="93" width="36" height="12" rx="2" fill="#7b8cff" opacity="0.5"/>
+  <text x="320" y="103" font-family="monospace" font-size="10" fill="#888">  1 (17%)</text>
+
+  <text x="60" y="122" font-family="monospace" font-size="11" fill="#a77de5" font-weight="bold">▣ pe_header</text>
+  <rect x="130" y="111" width="180" height="12" rx="2" fill="#1a1a3a"/>
+  <rect x="130" y="111" width="36" height="12" rx="2" fill="#a77de5" opacity="0.5"/>
+  <text x="320" y="121" font-family="monospace" font-size="10" fill="#888">  1 (17%)</text>
+
+  <line x1="30" y1="136" x2="870" y2="136" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Heatmap visualization -->
+  <text x="60" y="158" font-family="monospace" font-size="11" fill="#555" font-weight="bold">Memory Heatmap</text>
+  <text x="200" y="158" font-family="monospace" font-size="10" fill="#555">309,248 bytes · 64 columns per row</text>
+
+  <!-- Heatmap row with labeled blocks -->
+  <g transform="translate(60, 168)">
+    <!-- PE Header - low entropy -->
+    <rect x="0" y="0" width="50" height="20" rx="2" fill="#a77de5" opacity="0.4"/>
+    <text x="25" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#ccc">PE HDR</text>
+
+    <!-- Loader stub -->
+    <rect x="52" y="0" width="40" height="20" rx="2" fill="#5eead4" opacity="0.3"/>
+    <text x="72" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#ccc">STUB</text>
+
+    <!-- Code section - medium entropy -->
+    <rect x="94" y="0" width="220" height="20" rx="2" fill="#5eead4" opacity="0.5"/>
+    <text x="204" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#ccc">.text CODE H=5.67</text>
+
+    <!-- Data section -->
+    <rect x="316" y="0" width="60" height="20" rx="2" fill="#7b8cff" opacity="0.4"/>
+    <text x="346" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#ccc">.rdata</text>
+
+    <!-- Config block - high entropy (XOR'd) -->
+    <rect x="378" y="0" width="120" height="20" rx="2" fill="#ff6ec7" opacity="0.6"/>
+    <text x="438" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#fff">CONFIG (XOR) H=7.92</text>
+    <!-- Animated glow for high entropy -->
+    <rect x="378" y="0" width="120" height="20" rx="2" fill="none" stroke="#ff6ec7" stroke-width="1" opacity="0.4">
+      <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Sleep mask BOF - high entropy -->
+    <rect x="500" y="0" width="80" height="20" rx="2" fill="#ff6ec7" opacity="0.5"/>
+    <text x="540" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#fff">SLPMASK H=7.95</text>
+
+    <!-- Post-ex DLLs -->
+    <rect x="582" y="0" width="200" height="20" rx="2" fill="#5eead4" opacity="0.35"/>
+    <text x="682" y="14" text-anchor="middle" font-family="monospace" font-size="7" fill="#ccc">POST-EX DLLs H=6.34</text>
+  </g>
+
+  <!-- Offset labels -->
+  <g font-family="monospace" font-size="8" fill="#555">
+    <text x="60" y="200">0x0000</text>
+    <text x="154" y="200">0x0400</text>
+    <text x="314" y="200">0x30C00</text>
+    <text x="438" y="200">0x40000</text>
+    <text x="560" y="200">0x46000</text>
+    <text x="722" y="200">0x4B800</text>
+  </g>
+
+  <line x1="30" y1="215" x2="870" y2="215" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Anomaly zones -->
+  <text x="40" y="238" font-family="monospace" font-size="12" fill="#fbbf24" font-weight="bold">◆ ANOMALY ZONES</text>
+  <text x="210" y="238" font-family="monospace" font-size="11" fill="#555">─ 2 suspicious transitions</text>
+  <line x1="40" y1="248" x2="860" y2="248" stroke="#555" stroke-width="0.5"/>
+
+  <g font-family="monospace" font-size="11">
+    <text x="60" y="268" fill="#fbbf24" font-weight="bold">●</text>
+    <text x="80" y="268" fill="#e0e0e0">High-entropy config block (H=7.92)</text>
+    <text x="500" y="268" fill="#555">XOR 0x2e encrypted TLV data</text>
+    <text x="760" y="268" fill="#555">@0x40000</text>
+  </g>
+  <g font-family="monospace" font-size="11">
+    <text x="60" y="290" fill="#fbbf24" font-weight="bold">●</text>
+    <text x="80" y="290" fill="#e0e0e0">Sleep mask BOF region (H=7.95)</text>
+    <text x="500" y="290" fill="#555">Compiled BOF with stack spoofing</text>
+    <text x="760" y="290" fill="#555">@0x46000</text>
+  </g>
+
+  <!-- Legend bar -->
+  <g transform="translate(60, 315)">
+    <text x="0" y="10" font-family="monospace" font-size="9" fill="#555">Entropy:</text>
+    <rect x="70" y="0" width="50" height="14" rx="2" fill="#333"/><text x="78" y="10" font-family="monospace" font-size="8" fill="#888">H=0-2</text>
+    <rect x="125" y="0" width="50" height="14" rx="2" fill="#5eead4" opacity="0.3"/><text x="133" y="10" font-family="monospace" font-size="8" fill="#ccc">H=2-5</text>
+    <rect x="180" y="0" width="50" height="14" rx="2" fill="#5eead4" opacity="0.5"/><text x="188" y="10" font-family="monospace" font-size="8" fill="#ccc">H=5-7</text>
+    <rect x="235" y="0" width="50" height="14" rx="2" fill="#ff6ec7" opacity="0.5"/><text x="243" y="10" font-family="monospace" font-size="8" fill="#fff">H=7-8</text>
+    <text x="310" y="10" font-family="monospace" font-size="9" fill="#f87171">← suspicious</text>
+  </g>
+</svg>

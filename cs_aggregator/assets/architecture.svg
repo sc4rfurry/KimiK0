@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="acG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="50%" style="stop-color:#a77de5"/><stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <filter id="gl"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="sgl"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gr" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1a1a3a" stroke-width="0.4"/>
+    </pattern>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#5eead4" stroke-width="1"/>
+    </marker>
+    <marker id="arrP" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#a77de5" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="520" fill="url(#bgG)" rx="10"/>
+  <rect width="900" height="520" fill="url(#gr)" rx="10"/>
+  <rect x="1" y="1" width="898" height="518" fill="none" stroke="url(#acG)" stroke-width="1" rx="10" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="monospace" font-size="14" fill="#ff6ec7" font-weight="bold" letter-spacing="4">DISSECTION PIPELINE ARCHITECTURE</text>
+  <line x1="150" y1="48" x2="750" y2="48" stroke="url(#acG)" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- ═══ STAGE BOXES ═══ -->
+  <!-- Stage 1: Input Handler -->
+  <g transform="translate(75, 75)">
+    <rect width="140" height="65" rx="6" fill="#0d1117" stroke="#5eead4" stroke-width="1.2" opacity="0.9"/>
+    <rect width="140" height="3" rx="1.5" fill="#5eead4" opacity="0.6"/>
+    <text x="70" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#5eead4" font-weight="bold">STAGE 1</text>
+    <text x="70" y="38" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="11" fill="#e0e0e0" font-weight="600">Input Handler</text>
+    <text x="70" y="54" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">classify · validate</text>
+    <!-- Pulse -->
+    <circle cx="130" cy="10" r="4" fill="#5eead4" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Stage 2: Version Detector -->
+  <g transform="translate(255, 75)">
+    <rect width="140" height="65" rx="6" fill="#0d1117" stroke="#7b8cff" stroke-width="1.2"/>
+    <rect width="140" height="3" rx="1.5" fill="#7b8cff" opacity="0.6"/>
+    <text x="70" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#7b8cff" font-weight="bold">STAGE 2</text>
+    <text x="70" y="38" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="11" fill="#e0e0e0" font-weight="600">Version Detector</text>
+    <text x="70" y="54" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">fingerprint · schema</text>
+    <circle cx="130" cy="10" r="4" fill="#7b8cff" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Stage 3: Loader Extractor -->
+  <g transform="translate(435, 75)">
+    <rect width="140" height="65" rx="6" fill="#0d1117" stroke="#a77de5" stroke-width="1.2"/>
+    <rect width="140" height="3" rx="1.5" fill="#a77de5" opacity="0.6"/>
+    <text x="70" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#a77de5" font-weight="bold">STAGE 3</text>
+    <text x="70" y="38" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="11" fill="#e0e0e0" font-weight="600">Loader Extractor</text>
+    <text x="70" y="54" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">UDRL · stub · magic</text>
+    <circle cx="130" cy="10" r="4" fill="#a77de5" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Stage 4: Beacon Parser -->
+  <g transform="translate(615, 75)">
+    <rect width="140" height="65" rx="6" fill="#0d1117" stroke="#d35fd6" stroke-width="1.2"/>
+    <rect width="140" height="3" rx="1.5" fill="#d35fd6" opacity="0.6"/>
+    <text x="70" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#d35fd6" font-weight="bold">STAGE 4</text>
+    <text x="70" y="38" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="11" fill="#e0e0e0" font-weight="600">Beacon Parser</text>
+    <text x="70" y="54" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">PE · sections · IAT</text>
+    <circle cx="130" cy="10" r="4" fill="#d35fd6" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Connecting arrows Stage 1-4 -->
+  <line x1="215" y1="107" x2="255" y2="107" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+  <line x1="395" y1="107" x2="435" y2="107" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+  <line x1="575" y1="107" x2="615" y2="107" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+
+  <!-- Data flow dot animation -->
+  <circle r="3" fill="#5eead4" filter="url(#sgl)">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M215,107 L255,107 L395,107 L435,107 L575,107 L615,107"/>
+  </circle>
+
+  <!-- Stage 5: Config Extractor (center, bigger) -->
+  <g transform="translate(300, 175)">
+    <rect width="300" height="75" rx="8" fill="#0d1117" stroke="#ff6ec7" stroke-width="1.5"/>
+    <rect width="300" height="4" rx="2" fill="#ff6ec7" opacity="0.7"/>
+    <text x="150" y="25" text-anchor="middle" font-family="monospace" font-size="10" fill="#ff6ec7" font-weight="bold">STAGE 5 — CORE</text>
+    <text x="150" y="44" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="14" fill="#ffffff" font-weight="700">Config Extractor</text>
+    <text x="150" y="62" text-anchor="middle" font-family="monospace" font-size="9" fill="#888">XOR brute-force · TLV decode · schema validate · 60+ settings</text>
+    <!-- Animated border pulse -->
+    <rect width="300" height="75" rx="8" fill="none" stroke="#ff6ec7" stroke-width="2" opacity="0.2">
+      <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Arrow from Stage 4 down to Config -->
+  <path d="M685,140 L685,165 L600,175" fill="none" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.5"/>
+  <!-- Arrow from Stage 1 down to Config -->
+  <path d="M145,140 L145,165 L300,195" fill="none" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.5"/>
+
+  <!-- Plugin Bus (horizontal bar) -->
+  <g transform="translate(75, 290)">
+    <rect width="750" height="35" rx="6" fill="#0d1117" stroke="#a77de5" stroke-width="1" stroke-dasharray="4,2" opacity="0.7"/>
+    <text x="375" y="14" text-anchor="middle" font-family="monospace" font-size="10" fill="#a77de5" font-weight="bold" letter-spacing="3">PLUGIN EVENT BUS</text>
+    <text x="375" y="28" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">on_payload_loaded → on_pe_parsed → on_config_extracted → on_manifest_ready</text>
+    <!-- Traveling pulse -->
+    <rect x="0" y="0" width="60" height="35" rx="6" fill="#a77de5" opacity="0.05">
+      <animate attributeName="x" values="-60;750" dur="3s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Arrow from Config to Plugin Bus -->
+  <line x1="450" y1="250" x2="450" y2="290" stroke="#a77de5" stroke-width="1" marker-end="url(#arrP)" opacity="0.5"/>
+
+  <!-- Plugin grid (3x3 layout) -->
+  <!-- Row 1 -->
+  <g transform="translate(75, 350)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#5eead4" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#5eead4" font-weight="bold">◈ Fingerprinter</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">loader · syscall · evasion</text>
+  </g>
+  <g transform="translate(235, 350)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#7b8cff" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#7b8cff" font-weight="bold">◇ Flow Analyzer</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">disasm · graph · stage</text>
+  </g>
+  <g transform="translate(395, 350)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#a77de5" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#a77de5" font-weight="bold">◆ Entropy Analyzer</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">heatmap · anomaly · pack</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g transform="translate(75, 415)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#d35fd6" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#d35fd6" font-weight="bold">⊕ Config Differ</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">diff · opsec · defaults</text>
+  </g>
+  <g transform="translate(235, 415)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#ff6ec7" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff6ec7" font-weight="bold">✦ Version Audit</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">features · opsec · upgrade</text>
+  </g>
+  <g transform="translate(395, 415)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#5eead4" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#5eead4" font-weight="bold">⊕ PE Analyzer</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">sections · RWX · rich hdr</text>
+  </g>
+
+  <!-- Row 3 (partial) -->
+  <g transform="translate(555, 350)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#fbbf24" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#fbbf24" font-weight="bold">◈ YARA Scanner</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">20+ rules · ATT&amp;CK</text>
+  </g>
+  <g transform="translate(555, 415)">
+    <rect width="145" height="50" rx="5" fill="#0d1117" stroke="#f87171" stroke-width="0.8"/>
+    <text x="72" y="20" text-anchor="middle" font-family="monospace" font-size="9" fill="#f87171" font-weight="bold">⊕ IOC Extractor</text>
+    <text x="72" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">STIX · MISP · TTP</text>
+  </g>
+  <g transform="translate(715, 350)">
+    <rect width="110" height="115" rx="5" fill="#0d1117" stroke="#7b8cff" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="55" y="25" text-anchor="middle" font-family="monospace" font-size="9" fill="#7b8cff" font-weight="bold">⟐ Output</text>
+    <text x="55" y="45" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Rich Terminal</text>
+    <text x="55" y="60" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">JSON Manifest</text>
+    <text x="55" y="75" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">YARA Export</text>
+    <text x="55" y="90" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">STIX/MISP/CSV</text>
+    <text x="55" y="105" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Reassembly</text>
+  </g>
+
+  <!-- Stage 6: Manifest (bottom right) -->
+  <g transform="translate(715, 478)">
+    <rect width="110" height="28" rx="5" fill="#0d1117" stroke="url(#acG)" stroke-width="1"/>
+    <text x="55" y="18" text-anchor="middle" font-family="monospace" font-size="9" fill="#e0e0e0" font-weight="bold">STAGE 6 · Manifest</text>
+  </g>
+</svg>

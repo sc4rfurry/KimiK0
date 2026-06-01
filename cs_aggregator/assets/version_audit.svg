@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 780">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="ac2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="25%" style="stop-color:#7b8cff"/>
+      <stop offset="50%" style="stop-color:#a77de5"/><stop offset="75%" style="stop-color:#d35fd6"/><stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <linearGradient id="gaugeG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="50%" style="stop-color:#7b8cff"/><stop offset="100%" style="stop-color:#a77de5"/>
+    </linearGradient>
+    <pattern id="gr2" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1a1a3a" stroke-width="0.3"/>
+    </pattern>
+    <filter id="g2"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="900" height="780" fill="url(#bg2)" rx="10"/>
+  <rect width="900" height="780" fill="url(#gr2)" rx="10"/>
+  <rect x="1" y="1" width="898" height="778" fill="none" stroke="url(#ac2)" stroke-width="1" rx="10" opacity="0.3"/>
+
+  <!-- Header -->
+  <text x="40" y="36" font-family="monospace" font-size="14" fill="#ff6ec7" font-weight="bold" filter="url(#g2)">◈ VERSION FEATURE AUDIT</text>
+  <line x1="30" y1="48" x2="870" y2="48" stroke="#555" stroke-width="0.5"/>
+
+  <!-- Version identity -->
+  <text x="60" y="72" font-family="monospace" font-size="11" fill="#555">Version</text>
+  <text x="140" y="72" font-family="monospace" font-size="12" fill="#e0e0e0" font-weight="bold">CobaltStrike 4.9.1</text>
+  <text x="330" y="72" font-family="monospace" font-size="11" fill="#555">│</text>
+  <text x="345" y="72" font-family="monospace" font-size="12" fill="#7b8cff" font-weight="bold">31</text>
+  <text x="365" y="72" font-family="monospace" font-size="11" fill="#555">features tracked</text>
+  <text x="510" y="72" font-family="monospace" font-size="11" fill="#555">│</text>
+  <text x="525" y="72" font-family="monospace" font-size="12" fill="#5eead4" font-weight="bold">18</text>
+  <text x="545" y="72" font-family="monospace" font-size="11" fill="#555">available</text>
+
+  <!-- Feature Utilization Gauge -->
+  <text x="60" y="102" font-family="monospace" font-size="11" fill="#fbbf24" font-weight="bold">◆</text>
+  <text x="78" y="102" font-family="monospace" font-size="11" fill="#555">Feature Utilization</text>
+  <!-- Bar background -->
+  <rect x="280" y="90" width="240" height="14" rx="2" fill="#1a1a3a"/>
+  <!-- Bar fill (33%) -->
+  <rect x="280" y="90" width="80" height="14" rx="2" fill="#fbbf24" opacity="0.8"/>
+  <text x="535" y="102" font-family="monospace" font-size="12" fill="#fbbf24" font-weight="bold">33%</text>
+  <text x="575" y="102" font-family="monospace" font-size="10" fill="#fbbf24">MODERATE</text>
+
+  <!-- Hardening Score Gauge -->
+  <text x="60" y="124" font-family="monospace" font-size="11" fill="#5eead4" font-weight="bold">◈</text>
+  <text x="78" y="124" font-family="monospace" font-size="11" fill="#555">Hardening Score</text>
+  <rect x="280" y="112" width="240" height="14" rx="2" fill="#1a1a3a"/>
+  <rect x="280" y="112" width="230" height="14" rx="2" fill="url(#gaugeG)" opacity="0.8"/>
+  <text x="535" y="124" font-family="monospace" font-size="12" fill="#5eead4" font-weight="bold">96%</text>
+  <text x="575" y="124" font-family="monospace" font-size="10" fill="#5eead4" font-weight="bold">EXCELLENT</text>
+
+  <!-- Stat badges -->
+  <text x="60" y="152" font-family="monospace" font-size="10" fill="#555">┌─ ✓ Active: <tspan fill="#5eead4" font-weight="bold">6</tspan>/18 ─┬─ ✗ Unused: <tspan fill="#7b8cff" font-weight="bold">12</tspan> ─┬─ ◇ Upgrade: <tspan fill="#d35fd6" font-weight="bold">13</tspan> ─┬─ ⚠ OPSEC: <tspan fill="#f87171" font-weight="bold">2</tspan> ─┘</text>
+
+  <line x1="30" y1="168" x2="870" y2="168" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Feature Matrix Header -->
+  <text x="40" y="190" font-family="monospace" font-size="13" fill="#5eead4" font-weight="bold">◆ FEATURE MATRIX</text>
+  <text x="220" y="190" font-family="monospace" font-size="11" fill="#555">─ Capability Status by Category</text>
+  <line x1="40" y1="200" x2="860" y2="200" stroke="#555" stroke-width="0.5"/>
+
+  <!-- Evasion & Stealth -->
+  <text x="60" y="222" font-family="monospace" font-size="12" fill="#5eead4" font-weight="bold">◈ Evasion &amp; Stealth</text>
+  <!-- Mini bar -->
+  <rect x="260" y="211" width="64" height="10" rx="2" fill="#1a1a3a"/>
+  <rect x="260" y="211" width="43" height="10" rx="2" fill="#5eead4" opacity="0.6"/>
+  <text x="332" y="220" font-family="monospace" font-size="9" fill="#555">6/9</text>
+
+  <g font-family="monospace" font-size="11">
+    <text x="80" y="242" fill="#5eead4" font-weight="bold">✓</text><text x="100" y="242" fill="#e0e0e0" font-weight="bold">Sleep Mask (Heap Masking)</text><text x="480" y="242" fill="#555">Mask/unmask Beacon heap during sleep</text>
+    <text x="80" y="260" fill="#5eead4" font-weight="bold">✓</text><text x="100" y="260" fill="#e0e0e0" font-weight="bold">Indirect Syscalls</text><text x="480" y="260" fill="#555">Jump to ntdll for stealth</text>
+    <text x="80" y="278" fill="#5eead4" font-weight="bold">✓</text><text x="100" y="278" fill="#e0e0e0" font-weight="bold">Sleep Mask 16KB + Stack Spoofing</text><text x="480" y="278" fill="#555">Evasive sleep via stack spoofing (x64)</text>
+    <text x="80" y="296" fill="#5eead4" font-weight="bold">✓</text><text x="100" y="296" fill="#e0e0e0" font-weight="bold">Post-Ex Memory Cleanup</text><text x="480" y="296" fill="#555">Free reflective DLL after init</text>
+    <text x="80" y="314" fill="#5eead4" font-weight="bold">✓</text><text x="100" y="314" fill="#e0e0e0" font-weight="bold">CFG-Caution Mode</text><text x="480" y="314" fill="#555">Control Flow Guard compatibility</text>
+    <text x="80" y="332" fill="#f87171">✗</text><text x="100" y="332" fill="#555">Direct Syscalls</text><text x="480" y="332" fill="#555" font-style="italic">Bypass API hooking via Nt*</text>
+    <text x="80" y="350" fill="#f87171">✗</text><text x="100" y="350" fill="#555">BOF Memory Options</text><text x="480" y="350" fill="#555" font-style="italic">VirtualAlloc/HeapAlloc/MapViewOfFile</text>
+    <text x="80" y="368" fill="#555">⊘</text><text x="100" y="368" fill="#555" text-decoration="line-through">BeaconGate</text><text x="480" y="368" fill="#555">requires CS 4.10</text>
+    <text x="80" y="386" fill="#555">⊘</text><text x="100" y="386" fill="#555" text-decoration="line-through">Novel Sleepmask (Auto)</text><text x="480" y="386" fill="#555">requires CS 4.11</text>
+  </g>
+
+  <!-- Injection -->
+  <text x="60" y="414" font-family="monospace" font-size="12" fill="#f87171" font-weight="bold">⊕ Process Injection</text>
+  <rect x="260" y="403" width="64" height="10" rx="2" fill="#1a1a3a"/>
+  <rect x="260" y="403" width="0" height="10" rx="2" fill="#f87171" opacity="0.6"/>
+  <text x="332" y="412" font-family="monospace" font-size="9" fill="#555">0/1</text>
+  <g font-family="monospace" font-size="11">
+    <text x="80" y="432" fill="#fbbf24">·</text><text x="100" y="432" fill="#888">Process Injection Hooks</text><text x="480" y="432" fill="#555" font-style="italic">PROCESS_INJECT Aggressor hooks</text>
+  </g>
+
+  <!-- Communications -->
+  <text x="60" y="456" font-family="monospace" font-size="12" fill="#7b8cff" font-weight="bold">◇ Communications</text>
+  <rect x="260" y="445" width="64" height="10" rx="2" fill="#1a1a3a"/>
+  <text x="332" y="454" font-family="monospace" font-size="9" fill="#555">0/2</text>
+  <g font-family="monospace" font-size="11">
+    <text x="80" y="474" fill="#fbbf24">·</text><text x="100" y="474" fill="#888">WinHTTP Library</text><text x="480" y="474" fill="#555" font-style="italic">Alternative to WinInet</text>
+    <text x="80" y="492" fill="#fbbf24">·</text><text x="100" y="492" fill="#888">Per-Host C2 Profiles</text><text x="480" y="492" fill="#555" font-style="italic">http-host-profiles customization</text>
+  </g>
+
+  <line x1="30" y1="510" x2="870" y2="510" stroke="#333" stroke-width="0.5"/>
+
+  <!-- OPSEC Findings -->
+  <text x="40" y="534" font-family="monospace" font-size="13" fill="#f87171" font-weight="bold">⊕ OPSEC FINDINGS</text>
+  <text x="230" y="534" font-family="monospace" font-size="11" fill="#555">─ 2 issues detected</text>
+  <line x1="40" y1="544" x2="860" y2="544" stroke="#555" stroke-width="0.5"/>
+
+  <!-- Finding 1 -->
+  <g font-family="monospace" font-size="11">
+    <rect x="60" y="554" width="35" height="16" rx="3" fill="#1a1a3a" stroke="#5eead4" stroke-width="0.5"/>
+    <text x="78" y="566" text-anchor="middle" fill="#5eead4" font-weight="bold" font-size="9">LOW</text>
+    <text x="108" y="566" fill="#e0e0e0" font-weight="bold">No Kill Date Set</text>
+    <text x="80" y="584" fill="#555">│ Beacon has no expiration — risks long-term unauthorized access.</text>
+    <text x="80" y="602" fill="#5eead4">└─ ↳</text><text x="120" y="602" fill="#5eead4" font-weight="bold">Set a kill date to auto-terminate Beacon after engagement window.</text>
+  </g>
+
+  <!-- Finding 2 -->
+  <g font-family="monospace" font-size="11">
+    <rect x="60" y="618" width="40" height="16" rx="3" fill="#1a1a3a" stroke="#555" stroke-width="0.5"/>
+    <text x="80" y="630" text-anchor="middle" fill="#555" font-weight="bold" font-size="9">INFO</text>
+    <text x="112" y="630" fill="#e0e0e0" font-weight="bold">Beacon Data Store Not Configured</text>
+    <text x="80" y="648" fill="#555">│ BOFs/.NET assemblies resent every execution — extra network traffic.</text>
+    <text x="80" y="666" fill="#5eead4">└─ ↳</text><text x="120" y="666" fill="#5eead4" font-weight="bold">Set data_store_size > 0 to cache in Beacon memory.</text>
+  </g>
+
+  <line x1="30" y1="682" x2="870" y2="682" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Upgrade Roadmap (compact) -->
+  <text x="40" y="706" font-family="monospace" font-size="13" fill="#d35fd6" font-weight="bold">⟐ UPGRADE ROADMAP</text>
+  <text x="250" y="706" font-family="monospace" font-size="11" fill="#555">─ 13 features across 2 version(s)</text>
+  <line x1="40" y1="716" x2="860" y2="716" stroke="#555" stroke-width="0.5"/>
+
+  <g font-family="monospace" font-size="11">
+    <text x="60" y="736" fill="#d35fd6">├──</text><text x="100" y="736" fill="#7b8cff" font-weight="bold">CS 4.10</text><text x="190" y="736" fill="#d35fd6" font-weight="bold">+6 features</text>
+    <text x="60" y="754" fill="#555">│  ├─ →</text><text x="130" y="754" fill="#e0e0e0">BeaconGate</text><text x="300" y="754" fill="#555">Proxy API calls through sleep mask</text>
+    <text x="60" y="768" fill="#555">│  └─ →</text><text x="130" y="768" fill="#e0e0e0">C2 Hot Swapping</text><text x="300" y="768" fill="#555">Dynamic C2 host changes</text>
+  </g>
+</svg>

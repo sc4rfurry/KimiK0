@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="acG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="50%" style="stop-color:#a77de5"/><stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <linearGradient id="pnk" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6ec7"/><stop offset="100%" style="stop-color:#d35fd6"/>
+    </linearGradient>
+    <linearGradient id="cyn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="100%" style="stop-color:#7b8cff"/>
+    </linearGradient>
+    <filter id="gl"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="sgl"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gr" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1a1a3a" stroke-width="0.4"/>
+    </pattern>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#5eead4" stroke-width="1"/>
+    </marker>
+    <marker id="arrP" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#ff6ec7" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="540" fill="url(#bgG)" rx="10"/>
+  <rect width="900" height="540" fill="url(#gr)" rx="10"/>
+  <rect x="1" y="1" width="898" height="538" fill="none" stroke="url(#acG)" stroke-width="1" rx="10" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="14" fill="#ff6ec7" font-weight="bold" letter-spacing="4">SURGERY SDK — SHELLCODE DISASSEMBLY &amp; REASSEMBLY</text>
+  <text x="450" y="50" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#666">Micro-level beacon surgery for UDRL developers &amp; MalDev engineers</text>
+  <line x1="100" y1="60" x2="800" y2="60" stroke="url(#acG)" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- ═══ PHASE 1: DISSECT ═══ -->
+  <g transform="translate(30, 75)">
+    <rect width="260" height="195" rx="8" fill="#0d1117" stroke="#ff6ec7" stroke-width="1.2"/>
+    <rect width="260" height="4" rx="2" fill="url(#pnk)" opacity="0.7"/>
+    <text x="130" y="24" text-anchor="middle" font-family="monospace" font-size="11" fill="#ff6ec7" font-weight="bold" letter-spacing="2">① DISSECT</text>
+    <circle cx="245" cy="12" r="4" fill="#ff6ec7" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Segment bars -->
+    <rect x="15" y="38" width="230" height="22" rx="3" fill="#0a0a1a" stroke="#ff6ec750" stroke-width="0.8"/>
+    <rect x="15" y="38" width="25" height="22" rx="3" fill="#ff6ec715"/>
+    <text x="25" y="53" font-family="monospace" font-size="8" fill="#ff6ec7" font-weight="bold">SEG</text>
+    <text x="50" y="53" font-family="monospace" font-size="8" fill="#c0c0d0">LOADER_STUB</text>
+    <text x="225" y="53" text-anchor="end" font-family="monospace" font-size="7" fill="#555">2,048 B</text>
+
+    <rect x="15" y="64" width="230" height="22" rx="3" fill="#0a0a1a" stroke="#7b8cff50" stroke-width="0.8"/>
+    <rect x="15" y="64" width="25" height="22" rx="3" fill="#7b8cff15"/>
+    <text x="25" y="79" font-family="monospace" font-size="8" fill="#7b8cff" font-weight="bold">SEG</text>
+    <text x="50" y="79" font-family="monospace" font-size="8" fill="#c0c0d0">BEACON_DLL</text>
+    <text x="225" y="79" text-anchor="end" font-family="monospace" font-size="7" fill="#555">279,616 B</text>
+
+    <rect x="15" y="90" width="230" height="22" rx="3" fill="#0a0a1a" stroke="#a77de550" stroke-width="0.8"/>
+    <rect x="15" y="90" width="25" height="22" rx="3" fill="#a77de515"/>
+    <text x="25" y="105" font-family="monospace" font-size="8" fill="#a77de5" font-weight="bold">SEG</text>
+    <text x="50" y="105" font-family="monospace" font-size="8" fill="#c0c0d0">CONFIG_BLOCK</text>
+    <text x="225" y="105" text-anchor="end" font-family="monospace" font-size="7" fill="#555">4,096 B</text>
+
+    <rect x="15" y="116" width="230" height="22" rx="3" fill="#0a0a1a" stroke="#5eead450" stroke-width="0.8"/>
+    <rect x="15" y="116" width="25" height="22" rx="3" fill="#5eead415"/>
+    <text x="25" y="131" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">SEG</text>
+    <text x="50" y="131" font-family="monospace" font-size="8" fill="#c0c0d0">SLEEP_MASK</text>
+    <text x="225" y="131" text-anchor="end" font-family="monospace" font-size="7" fill="#555">1,024 B</text>
+
+    <line x1="15" y1="148" x2="245" y2="148" stroke="#1a1a3a" stroke-width="0.5"/>
+    <text x="130" y="163" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">PayloadMap — byte-accurate offsets</text>
+    <text x="130" y="176" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Zero-copy extraction · SHA256 · entropy</text>
+    <text x="130" y="189" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Per-segment confidence scoring</text>
+  </g>
+
+  <!-- Animated flow arrow 1 -->
+  <line x1="295" y1="172" x2="325" y2="172" stroke="#ff6ec7" stroke-width="1" marker-end="url(#arrP)" opacity="0.6"/>
+  <circle r="3" fill="#ff6ec7" filter="url(#sgl)">
+    <animate attributeName="cx" values="295;325" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="172;172" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ═══ PHASE 2: MODIFY ═══ -->
+  <g transform="translate(330, 75)">
+    <rect width="240" height="195" rx="8" fill="#0d1117" stroke="#7b8cff" stroke-width="1.2"/>
+    <rect width="240" height="4" rx="2" fill="url(#cyn)" opacity="0.7"/>
+    <text x="120" y="24" text-anchor="middle" font-family="monospace" font-size="11" fill="#7b8cff" font-weight="bold" letter-spacing="2">② MODIFY</text>
+    <circle cx="225" cy="12" r="4" fill="#7b8cff" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- ConfigSurgeon -->
+    <rect x="12" y="38" width="216" height="44" rx="5" fill="#0a0a1a" stroke="#a77de5" stroke-width="0.8"/>
+    <rect x="12" y="38" width="216" height="2" rx="1" fill="#a77de5" opacity="0.5"/>
+    <text x="22" y="55" font-family="monospace" font-size="9" fill="#a77de5" font-weight="bold">◈ ConfigSurgeon</text>
+    <text x="22" y="68" font-family="monospace" font-size="7" fill="#555">field-level read/write · XOR re-encrypt</text>
+    <text x="22" y="78" font-family="monospace" font-size="7" fill="#555">52 settings · dirty tracking · JSON I/O</text>
+
+    <!-- LoaderSurgeon -->
+    <rect x="12" y="88" width="216" height="38" rx="5" fill="#0a0a1a" stroke="#ff6ec7" stroke-width="0.8"/>
+    <rect x="12" y="88" width="216" height="2" rx="1" fill="#ff6ec7" opacity="0.5"/>
+    <text x="22" y="105" font-family="monospace" font-size="9" fill="#ff6ec7" font-weight="bold">◈ LoaderSurgeon</text>
+    <text x="22" y="118" font-family="monospace" font-size="7" fill="#555">UDRL swap · PIC validation · size check</text>
+
+    <!-- SleepMaskSurgeon -->
+    <rect x="12" y="132" width="216" height="38" rx="5" fill="#0a0a1a" stroke="#5eead4" stroke-width="0.8"/>
+    <rect x="12" y="132" width="216" height="2" rx="1" fill="#5eead4" opacity="0.5"/>
+    <text x="22" y="149" font-family="monospace" font-size="9" fill="#5eead4" font-weight="bold">◈ SleepMaskSurgeon</text>
+    <text x="22" y="162" font-family="monospace" font-size="7" fill="#555">inject · swap · remove · BOF validate</text>
+
+    <line x1="12" y1="178" x2="228" y2="178" stroke="#1a1a3a" stroke-width="0.5"/>
+    <text x="120" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Stateless · Diff · Export/Import</text>
+  </g>
+
+  <!-- Animated flow arrow 2 -->
+  <line x1="575" y1="172" x2="605" y2="172" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+  <circle r="3" fill="#5eead4" filter="url(#sgl)">
+    <animate attributeName="cx" values="575;605" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="172;172" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ═══ PHASE 3: BUILD ═══ -->
+  <g transform="translate(610, 75)">
+    <rect width="260" height="195" rx="8" fill="#0d1117" stroke="#5eead4" stroke-width="1.2"/>
+    <rect width="260" height="4" rx="2" fill="#5eead4" opacity="0.7"/>
+    <text x="130" y="24" text-anchor="middle" font-family="monospace" font-size="11" fill="#5eead4" font-weight="bold" letter-spacing="2">③ BUILD</text>
+    <circle cx="245" cy="12" r="4" fill="#5eead4" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <rect x="15" y="38" width="230" height="30" rx="4" fill="#0a0a1a" stroke="#a77de550" stroke-width="0.8"/>
+    <text x="25" y="55" font-family="monospace" font-size="8" fill="#a77de5" font-weight="bold">01</text>
+    <text x="45" y="55" font-family="'Segoe UI',sans-serif" font-size="9" fill="#c0c0d0">Re-encrypt TLV config</text>
+    <text x="235" y="55" text-anchor="end" font-family="monospace" font-size="7" fill="#555">XOR patch</text>
+
+    <rect x="15" y="72" width="230" height="30" rx="4" fill="#0a0a1a" stroke="#ff6ec750" stroke-width="0.8"/>
+    <text x="25" y="89" font-family="monospace" font-size="8" fill="#ff6ec7" font-weight="bold">02</text>
+    <text x="45" y="89" font-family="'Segoe UI',sans-serif" font-size="9" fill="#c0c0d0">Swap loader stub</text>
+    <text x="235" y="89" text-anchor="end" font-family="monospace" font-size="7" fill="#555">preserve offsets</text>
+
+    <rect x="15" y="106" width="230" height="30" rx="4" fill="#0a0a1a" stroke="#7b8cff50" stroke-width="0.8"/>
+    <text x="25" y="123" font-family="monospace" font-size="8" fill="#7b8cff" font-weight="bold">03</text>
+    <text x="45" y="123" font-family="'Segoe UI',sans-serif" font-size="9" fill="#c0c0d0">Validate structure</text>
+    <text x="235" y="123" text-anchor="end" font-family="monospace" font-size="7" fill="#555">MZ · PE · bounds</text>
+
+    <rect x="15" y="140" width="230" height="30" rx="4" fill="#0a0a1a" stroke="#5eead450" stroke-width="0.8"/>
+    <text x="25" y="157" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">04</text>
+    <text x="45" y="157" font-family="'Segoe UI',sans-serif" font-size="9" fill="#c0c0d0">Emit patched payload</text>
+    <text x="235" y="157" text-anchor="end" font-family="monospace" font-size="7" fill="#555">SHA256 proof</text>
+
+    <line x1="15" y1="178" x2="245" y2="178" stroke="#1a1a3a" stroke-width="0.5"/>
+    <text x="130" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Byte-perfect · zero delta · round-trip</text>
+  </g>
+
+  <!-- ═══ CODE EXAMPLE ═══ -->
+  <g transform="translate(30, 285)">
+    <rect width="840" height="155" rx="8" fill="#0a0a1a" stroke="#1a1a3a" stroke-width="1"/>
+    <!-- Window chrome -->
+    <rect width="840" height="22" rx="8" fill="#141422"/>
+    <circle cx="18" cy="11" r="4.5" fill="#ff5f57"/>
+    <circle cx="35" cy="11" r="4.5" fill="#febc2e"/>
+    <circle cx="52" cy="11" r="4.5" fill="#28c840"/>
+    <text x="420" y="15" text-anchor="middle" font-family="monospace" font-size="8" fill="#444">surgery_example.py — Round-Trip Config Patching</text>
+
+    <!-- Line numbers gutter -->
+    <rect x="0" y="22" width="28" height="133" fill="#0f0f1a" rx="0"/>
+    <text x="22" y="42" text-anchor="end" font-family="monospace" font-size="8" fill="#333">1</text>
+    <text x="22" y="60" text-anchor="end" font-family="monospace" font-size="8" fill="#333">2</text>
+    <text x="22" y="78" text-anchor="end" font-family="monospace" font-size="8" fill="#333">3</text>
+    <text x="22" y="96" text-anchor="end" font-family="monospace" font-size="8" fill="#333">4</text>
+    <text x="22" y="114" text-anchor="end" font-family="monospace" font-size="8" fill="#333">5</text>
+    <text x="22" y="132" text-anchor="end" font-family="monospace" font-size="8" fill="#333">6</text>
+
+    <!-- Code lines using tspan for proper flow -->
+    <text x="35" y="42" font-family="monospace" font-size="9">
+      <tspan fill="#c586c0">from</tspan><tspan fill="#d4d4d4"> cs_aggregator.surgery </tspan><tspan fill="#c586c0">import</tspan><tspan fill="#4ec9b0"> BeaconSurgeon</tspan>
+    </text>
+
+    <text x="35" y="60" font-family="monospace" font-size="9" fill="#6a9955"># Dissect a real CS 4.9.1 beacon payload</text>
+
+    <text x="35" y="78" font-family="monospace" font-size="9">
+      <tspan fill="#9cdcfe">surgeon</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#4ec9b0">BeaconSurgeon</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#ce9178">"beacon_x64.bin"</tspan><tspan fill="#d4d4d4">)</tspan>
+    </text>
+
+    <text x="35" y="96" font-family="monospace" font-size="9">
+      <tspan fill="#9cdcfe">surgeon</tspan><tspan fill="#d4d4d4">.config[</tspan><tspan fill="#ce9178">"SETTING_SLEEPTIME"</tspan><tspan fill="#d4d4d4">] = </tspan><tspan fill="#b5cea8">15000</tspan><tspan fill="#6a9955">  # 120s → 15s</tspan>
+    </text>
+
+    <text x="35" y="114" font-family="monospace" font-size="9">
+      <tspan fill="#9cdcfe">surgeon</tspan><tspan fill="#d4d4d4">.replace_loader(</tspan><tspan fill="#dcdcaa">open</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#ce9178">"my_udrl.bin"</tspan><tspan fill="#d4d4d4">, </tspan><tspan fill="#ce9178">"rb"</tspan><tspan fill="#d4d4d4">).read())</tspan>
+    </text>
+
+    <text x="35" y="132" font-family="monospace" font-size="9">
+      <tspan fill="#9cdcfe">patched</tspan><tspan fill="#d4d4d4"> = surgeon.build()</tspan><tspan fill="#6a9955">  # 309,248 B (Δ0) ✓</tspan>
+    </text>
+
+    <!-- Active line highlight -->
+    <rect x="28" y="88" width="812" height="15" fill="#264f7830" rx="0"/>
+  </g>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <g transform="translate(30, 455)">
+    <rect width="840" height="70" rx="8" fill="#0d1117" stroke="url(#acG)" stroke-width="0.8" opacity="0.9"/>
+    <rect width="840" height="70" rx="8" fill="none" stroke="url(#acG)" stroke-width="1.5" opacity="0.15">
+      <animate attributeName="opacity" values="0.08;0.2;0.08" dur="3s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Stat items -->
+    <text x="70" y="25" text-anchor="middle" font-family="monospace" font-size="18" fill="#ff6ec7" font-weight="bold" filter="url(#gl)">9</text>
+    <text x="70" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Classes</text>
+    <text x="70" y="55" text-anchor="middle" font-family="monospace" font-size="7" fill="#444">Exported</text>
+
+    <line x1="140" y1="10" x2="140" y2="60" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="210" y="25" text-anchor="middle" font-family="monospace" font-size="18" fill="#7b8cff" font-weight="bold" filter="url(#gl)">52</text>
+    <text x="210" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Config Fields</text>
+    <text x="210" y="55" text-anchor="middle" font-family="monospace" font-size="7" fill="#444">Read/Write</text>
+
+    <line x1="280" y1="10" x2="280" y2="60" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="350" y="25" text-anchor="middle" font-family="monospace" font-size="18" fill="#a77de5" font-weight="bold" filter="url(#gl)">5</text>
+    <text x="350" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Segments</text>
+    <text x="350" y="55" text-anchor="middle" font-family="monospace" font-size="7" fill="#444">Mapped</text>
+
+    <line x1="420" y1="10" x2="420" y2="60" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="490" y="25" text-anchor="middle" font-family="monospace" font-size="18" fill="#5eead4" font-weight="bold" filter="url(#gl)">0</text>
+    <text x="490" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Byte Delta</text>
+    <text x="490" y="55" text-anchor="middle" font-family="monospace" font-size="7" fill="#444">Round-Trip</text>
+
+    <line x1="560" y1="10" x2="560" y2="60" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="630" y="25" text-anchor="middle" font-family="monospace" font-size="18" fill="#fbbf24" font-weight="bold" filter="url(#gl)">31</text>
+    <text x="630" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Unit Tests</text>
+    <text x="630" y="55" text-anchor="middle" font-family="monospace" font-size="7" fill="#444">Passing</text>
+
+    <line x1="700" y1="10" x2="700" y2="60" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="770" y="25" text-anchor="middle" font-family="monospace" font-size="18" fill="#f87171" font-weight="bold" filter="url(#gl)">XOR</text>
+    <text x="770" y="42" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">Re-Encrypt</text>
+    <text x="770" y="55" text-anchor="middle" font-family="monospace" font-size="7" fill="#444">TLV Config</text>
+  </g>
+</svg>

@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "version": "4.12.x",
+    "description": "CobaltStrike 4.12.x — BREAKING: Drip-loading, ALLOCATED_MEMORY changes, UDC2, RtlCloneUserProcess, Java 17, pivot beacon sleepmask",
+    "tlvHeaderSize": 6,
+    "tlvByteOrder": "big-endian",
+    "maxSettingID": 80,
+    "budVersion": 3,
+    "dataTypes": {
+      "1": "SHORT (uint16 BE, 2 bytes)",
+      "2": "INT (uint32 BE, 4 bytes)",
+      "3": "DATA (variable-length blob)"
+    }
+  },
+  "tlvTypes": {
+    "0x0001": "BeaconType",
+    "0x0002": "Port",
+    "0x0003": "SleepTime",
+    "0x0004": "MaxGetSize",
+    "0x0005": "Jitter",
+    "0x0006": "DNSIdle",
+    "0x0007": "DNSSleep",
+    "0x0008": "UserAgent",
+    "0x0009": "HTTPMethodPaths",
+    "0x000A": "C2Servers",
+    "0x000B": "PublicKey",
+    "0x000C": "Spawnto",
+    "0x000D": "PipeName",
+    "0x000E": "KillDate",
+    "0x000F": "TextSections",
+    "0x0010": "ProcessInject",
+    "0x0011": "ProcessInjectExecute",
+    "0x0012": "WatermarkHash",
+    "0x0013": "StageBlock",
+    "0x0014": "StageCleanUp",
+    "0x0016": "CFSCaution",
+    "0x0017": "HostHeader",
+    "0x0019": "ProxyConfigBlock",
+    "0x0020": "ExitFunction",
+    "0x0022": "HeaderConfig",
+    "0x0025": "SSHBlock",
+    "0x0026": "NameServer",
+    "0x0027": "PostExBlock",
+    "0x0028": "NamedPipeBlock",
+    "0x0029": "TCPBlock",
+    "0x002A": "SMBBlock",
+    "0x002B": "ExtendedFlags",
+    "0x002C": "BeaconGateConfig",
+    "0x002D": "SleepMaskAdvancedConfig",
+    "0x004A": "MaskedWatermark",
+    "0x004C": "DataStoreSize",
+    "0x004D": "HttpDataRequired",
+    "0x004E": "BeaconGate",
+    "0x004F": "RdllUseDriploading",
+    "0x0050": "RdllDriploadDelay"
+  },
+  "settingIDs": {
+    "76": "SETTING_HTTP_DATA_REQUIRED",
+    "77": "SETTING_BEACON_GATE",
+    "78": "SETTING_BEACON_GATE_CONFIG",
+    "79": "SETTING_RDLL_USE_DRIPLOADING",
+    "80": "SETTING_RDLL_DRIPLOAD_DELAY"
+  },
+  "settingTypes": {
+    "_note": "Inherits 1-75 from 4.9.1. Additional types for 76-80.",
+    "76": 1, "77": 3, "78": 3, "79": 1, "80": 2
+  },
+  "loaderSignaturePatterns": {
+    "prepend_loader_default": "48 83 ec 28 48 8d 05 ?? ?? ?? ?? 48 89 44 24",
+    "drip_loader_pattern": "48 83 ec 38 4c 8b 44 24 ?? 49 8b 00 48 89",
+    "call_pop_rip_relative": "48 8b 05 ?? ?? ?? ?? 48 85 c0 74 ??"
+  },
+  "configBlockHeuristics": {
+    "xorKeyLengths": [1, 4],
+    "knownKeys": ["2e2e2e2e"],
+    "searchRangeEndOffset": 1024,
+    "sectionNames": [".data", ".rdata", ".sleep", ".bg"],
+    "entropyThresholdLow": 5.5,
+    "entropyThresholdHigh": 7.8
+  },
+  "sleepMaskSignatures": {
+    "patterns": [
+      "48 89 5c 24 ?? 48 89 74 24 ?? 57 48 81 ec ?? ?? 00 00",
+      "48 83 ec 38 48 8b 05 ?? ?? ?? ?? 48 33 c4 48 89 44 24 28"
+    ],
+    "expectedSizeRange": [8192, 65536],
+    "exportNames": ["Mask", "Unmask", "BeaconGate", "BeaconGateSetup"],
+    "novelSleepmask": true,
+    "heapMaskingSupport": true,
+    "pivotBeaconSupport": true,
+    "notes": "4.12 extends novel sleepmask to pivot beacons (SMB/TCP). ALLOCATED_MEMORY structures updated."
+  },
+  "budStructure": {
+    "version": 3,
+    "versionHex": "0x041200",
+    "reasonCode": 13,
+    "reasonCodeName": "DLL_BEACON_USER_DATA",
+    "breakingChanges": [
+      "ALLOCATED_MEMORY structure updated for drip-loading support",
+      "Module stomping UDRLs must set METHOD_MODULESTOMP in ALLOCATED_MEMORY for CFG compat",
+      "Old UDRLs compiled for 4.9.x/4.10.x will NOT work due to structure size/offset changes"
+    ],
+    "fields": {
+      "version": {"offset": 0, "size": 4, "desc": "BUD version as 0xMMmmPP (0x041200 for 4.12)"},
+      "allocatedMemoryRegions": {"offset": 8, "size": "variable", "desc": "Updated ALLOCATED_MEMORY_REGION for drip-loading"},
+      "allocatedMemorySections": {"offset": "variable", "size": "variable", "desc": "Per-section memory tracking"},
+      "sleepMaskFunction": {"offset": "variable", "size": 8, "desc": "Pointer to Mask() function"},
+      "unmaskFunction": {"offset": "variable", "size": 8, "desc": "Pointer to Unmask() function"},
+      "eventHandle": {"offset": "variable", "size": 8, "desc": "Sleep event handle"},
+      "beaconGateContext": {"offset": "variable", "size": "variable", "desc": "BeaconGate API proxy context"},
+      "dripLoadConfig": {"offset": "variable", "size": "variable", "desc": "Drip-loading configuration: delay, chunk size"}
+    },
+    "loaderType": "prepend"
+  },
+  "segmentBoundaryHints": {
+    "loaderMaxSize": 16384,
+    "loaderMinSize": 1024,
+    "beaconDLLExpectedMinSize": 102400,
+    "beaconDLLExpectedMaxSize": 524288,
+    "postExSearchStartOffset": null
+  },
+  "injectionTechniques": {
+    "supported": [
+      "ObfSetThreadContext", "NtMapViewOfSection", "VirtualAllocEx",
+      "CreateRemoteThread", "RtlCloneUserProcess", "TpDirect",
+      "TpStartRoutineStub", "EarlyCascade"
+    ],
+    "default": "ObfSetThreadContext",
+    "newIn412": ["RtlCloneUserProcess", "TpDirect", "TpStartRoutineStub", "EarlyCascade"]
+  },
+  "dripLoading": {
+    "malleable_options": {
+      "rdll_use_driploading": "bool — enable drip loading for reflective loader",
+      "rdll_dripload_delay": "int — delay in ms between chunk writes"
+    },
+    "notes": "Breaks up payload writes into small chunks with delays to defeat EDR event correlation"
+  },
+  "udc2": {
+    "description": "User Defined Command and Control — custom C2 channels as BOFs",
+    "notes": "Replaces legacy extc2 named pipe relay. BOF is patched into beacon at generation time."
+  },
+  "assemblyRules": {
+    "segmentOrder": ["SEG_LOADER_STUB", "SEG_BEACON_DLL", "SEG_SLEEP_MASK"],
+    "loaderAlignment": 4,
+    "dllAlignment": 512,
+    "sleepMaskAlignment": 4,
+    "sleepMaskBufferSize": 65536,
+    "loaderType": "prepend",
+    "stompLoadersDeprecated": true,
+    "notes": "CS 4.12.x: BREAKING changes to ALLOCATED_MEMORY. Drip-loading support. Pivot beacon sleepmask. UDC2 for custom C2."
+  }
+}

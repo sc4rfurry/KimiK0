@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="acG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="50%" style="stop-color:#a77de5"/><stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <linearGradient id="budG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a77de5"/><stop offset="100%" style="stop-color:#5eead4"/>
+    </linearGradient>
+    <filter id="gl"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="sgl"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gr" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1a1a3a" stroke-width="0.4"/>
+    </pattern>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#5eead4" stroke-width="1"/>
+    </marker>
+    <marker id="arrP" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#a77de5" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="550" fill="url(#bgG)" rx="10"/>
+  <rect width="900" height="550" fill="url(#gr)" rx="10"/>
+  <rect x="1" y="1" width="898" height="548" fill="none" stroke="url(#acG)" stroke-width="1" rx="10" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="14" fill="#a77de5" font-weight="bold" letter-spacing="4">BUD ANALYZER — BEACON USER DATA DETECTION</text>
+  <text x="450" y="50" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="10" fill="#666">Identifies BUD structures, SYSCALL_API coverage, ALLOCATED_MEMORY regions, and sleep mask registration</text>
+  <line x1="100" y1="60" x2="800" y2="60" stroke="url(#acG)" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- ═══ DETECTION PIPELINE ═══ -->
+  <!-- Step 1 -->
+  <g transform="translate(30, 75)">
+    <rect width="195" height="85" rx="6" fill="#0d1117" stroke="#ff6ec7" stroke-width="1.2"/>
+    <rect width="195" height="3" rx="1.5" fill="#ff6ec7" opacity="0.6"/>
+    <text x="97" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff6ec7" font-weight="bold">STEP 1 — REASON CODE</text>
+    <circle cx="180" cy="10" r="4" fill="#ff6ec7" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <text x="15" y="42" font-family="monospace" font-size="8" fill="#c0c0d0">Pattern scan for</text>
+    <text x="15" y="55" font-family="monospace" font-size="8" fill="#ff6ec7" font-weight="bold">DLL_BEACON_USER_DATA</text>
+    <text x="15" y="68" font-family="monospace" font-size="8" fill="#555">mov edx, 0x0D</text>
+    <text x="15" y="79" font-family="monospace" font-size="8" fill="#555">mov r8d, 0x0D · push 0x0D</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="230" y1="117" x2="250" y2="117" stroke="#ff6ec7" stroke-width="1" marker-end="url(#arrP)" opacity="0.6"/>
+  <circle r="2.5" fill="#ff6ec7" filter="url(#sgl)">
+    <animate attributeName="cx" values="230;250" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="117;117" dur="1s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Step 2 -->
+  <g transform="translate(255, 75)">
+    <rect width="195" height="85" rx="6" fill="#0d1117" stroke="#7b8cff" stroke-width="1.2"/>
+    <rect width="195" height="3" rx="1.5" fill="#7b8cff" opacity="0.6"/>
+    <text x="97" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#7b8cff" font-weight="bold">STEP 2 — VERSION</text>
+    <circle cx="180" cy="10" r="4" fill="#7b8cff" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <text x="15" y="42" font-family="monospace" font-size="8" fill="#c0c0d0">IMM value detection</text>
+    <text x="15" y="55" font-family="monospace" font-size="8" fill="#7b8cff" font-weight="bold">0x040901 → 4.9.1</text>
+    <text x="15" y="68" font-family="monospace" font-size="8" fill="#555">MOV opcode verification</text>
+    <text x="15" y="79" font-family="monospace" font-size="8" fill="#555">Range: 0x040900–0x041200</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="455" y1="117" x2="475" y2="117" stroke="#7b8cff" stroke-width="1" opacity="0.6"/>
+  <circle r="2.5" fill="#7b8cff" filter="url(#sgl)">
+    <animate attributeName="cx" values="455;475" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="117;117" dur="1s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Step 3 -->
+  <g transform="translate(480, 75)">
+    <rect width="195" height="85" rx="6" fill="#0d1117" stroke="#5eead4" stroke-width="1.2"/>
+    <rect width="195" height="3" rx="1.5" fill="#5eead4" opacity="0.6"/>
+    <text x="97" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#5eead4" font-weight="bold">STEP 3 — SYSCALL_API</text>
+    <circle cx="180" cy="10" r="4" fill="#5eead4" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <text x="15" y="42" font-family="monospace" font-size="8" fill="#c0c0d0">17 Nt* API resolution</text>
+    <text x="15" y="55" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">17 entries × 20 bytes</text>
+    <text x="15" y="68" font-family="monospace" font-size="8" fill="#555">fnAddr · jmpAddr · sysNum</text>
+    <text x="15" y="79" font-family="monospace" font-size="8" fill="#555">NtAllocateVM...NtWriteVM</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="680" y1="117" x2="700" y2="117" stroke="#5eead4" stroke-width="1" marker-end="url(#arr)" opacity="0.6"/>
+  <circle r="2.5" fill="#5eead4" filter="url(#sgl)">
+    <animate attributeName="cx" values="680;700" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="117;117" dur="1s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Step 4 -->
+  <g transform="translate(705, 75)">
+    <rect width="165" height="85" rx="6" fill="#0d1117" stroke="#a77de5" stroke-width="1.2"/>
+    <rect width="165" height="3" rx="1.5" fill="#a77de5" opacity="0.6"/>
+    <text x="82" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#a77de5" font-weight="bold">STEP 4 — MASK</text>
+    <circle cx="150" cy="10" r="4" fill="#a77de5" opacity="0.7">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+
+    <text x="12" y="42" font-family="monospace" font-size="8" fill="#c0c0d0">Sleep mask fn ptrs</text>
+    <text x="12" y="55" font-family="monospace" font-size="8" fill="#a77de5" font-weight="bold">Registration detect</text>
+    <text x="12" y="68" font-family="monospace" font-size="8" fill="#555">ALLOCATED_MEMORY</text>
+    <text x="12" y="79" font-family="monospace" font-size="8" fill="#555">region validation</text>
+  </g>
+
+  <!-- Traveling data dot across all steps -->
+  <circle r="3" fill="#a77de5" filter="url(#sgl)">
+    <animateMotion dur="5s" repeatCount="indefinite" path="M127,117 L255,117 L352,117 L480,117 L577,117 L705,117 L787,117"/>
+  </circle>
+
+  <!-- ═══ BUD STRUCT VERSIONS ═══ -->
+  <g transform="translate(30, 180)">
+    <rect width="530" height="170" rx="8" fill="#0d1117" stroke="#a77de5" stroke-width="1.2"/>
+    <rect width="530" height="4" rx="2" fill="url(#budG)" opacity="0.7"/>
+    <text x="265" y="26" text-anchor="middle" font-family="monospace" font-size="11" fill="#a77de5" font-weight="bold" letter-spacing="2">BUD STRUCT VERSIONS</text>
+
+    <!-- v1 -->
+    <rect x="15" y="40" width="500" height="35" rx="5" fill="#0a0a1a" stroke="#ff6ec750" stroke-width="0.8"/>
+    <rect x="15" y="40" width="4" height="35" rx="2" fill="#ff6ec7" opacity="0.7"/>
+    <text x="30" y="55" font-family="monospace" font-size="12" fill="#ff6ec7" font-weight="bold" filter="url(#gl)">v1</text>
+    <text x="55" y="55" font-family="monospace" font-size="9" fill="#c0c0d0" font-weight="bold">CS 4.9.x</text>
+    <text x="150" y="55" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="165" y="55" font-family="monospace" font-size="8" fill="#888">USER_DATA { version, syscall_api[17], custom[32] }</text>
+    <text x="30" y="70" font-family="monospace" font-size="7" fill="#444">0x040901 → 4.9.1 · Initial BUD structure with basic syscall table</text>
+
+    <!-- v2 -->
+    <rect x="15" y="80" width="500" height="35" rx="5" fill="#0a0a1a" stroke="#7b8cff50" stroke-width="0.8"/>
+    <rect x="15" y="80" width="4" height="35" rx="2" fill="#7b8cff" opacity="0.7"/>
+    <text x="30" y="95" font-family="monospace" font-size="12" fill="#7b8cff" font-weight="bold" filter="url(#gl)">v2</text>
+    <text x="55" y="95" font-family="monospace" font-size="9" fill="#c0c0d0" font-weight="bold">CS 4.10–4.11</text>
+    <text x="168" y="95" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="183" y="95" font-family="monospace" font-size="8" fill="#888">+ PALLOCATED_MEMORY · BeaconGate hooks</text>
+    <text x="30" y="110" font-family="monospace" font-size="7" fill="#444">0x041000/0x041100 → 4.10.x/4.11.x · Expanded memory management</text>
+
+    <!-- v3 -->
+    <rect x="15" y="120" width="500" height="35" rx="5" fill="#0a0a1a" stroke="#5eead450" stroke-width="0.8"/>
+    <rect x="15" y="120" width="4" height="35" rx="2" fill="#5eead4" opacity="0.7"/>
+    <text x="30" y="135" font-family="monospace" font-size="12" fill="#5eead4" font-weight="bold" filter="url(#gl)">v3</text>
+    <text x="55" y="135" font-family="monospace" font-size="9" fill="#c0c0d0" font-weight="bold">CS 4.12+</text>
+    <text x="138" y="135" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="153" y="135" font-family="monospace" font-size="8" fill="#888">+ drip-loading · METHOD_MODULESTOMP · UDC2</text>
+    <text x="30" y="150" font-family="monospace" font-size="7" fill="#444">0x041200 → 4.12.x · Full surgical reassembly support</text>
+  </g>
+
+  <!-- ═══ SYSCALL_API_ENTRY STRUCT ═══ -->
+  <g transform="translate(575, 180)">
+    <rect width="295" height="170" rx="8" fill="#0d1117" stroke="#5eead4" stroke-width="1.2"/>
+    <rect width="295" height="4" rx="2" fill="#5eead4" opacity="0.7"/>
+    <text x="147" y="26" text-anchor="middle" font-family="monospace" font-size="10" fill="#5eead4" font-weight="bold" letter-spacing="1">SYSCALL_API_ENTRY (x64)</text>
+
+    <!-- Table header -->
+    <rect x="12" y="38" width="271" height="16" rx="2" fill="#141422"/>
+    <text x="22" y="50" font-family="monospace" font-size="7" fill="#666" font-weight="bold">OFFSET</text>
+    <text x="75" y="50" font-family="monospace" font-size="7" fill="#666" font-weight="bold">SIZE</text>
+    <text x="120" y="50" font-family="monospace" font-size="7" fill="#666" font-weight="bold">FIELD</text>
+    <text x="200" y="50" font-family="monospace" font-size="7" fill="#666" font-weight="bold">DESCRIPTION</text>
+
+    <text x="22" y="68" font-family="monospace" font-size="8" fill="#b5cea8">0x00</text>
+    <text x="75" y="68" font-family="monospace" font-size="8" fill="#888">8 B</text>
+    <text x="120" y="68" font-family="monospace" font-size="8" fill="#ff6ec7" font-weight="bold">fnAddr</text>
+    <text x="200" y="68" font-family="monospace" font-size="7" fill="#555">Nt* function address</text>
+
+    <text x="22" y="84" font-family="monospace" font-size="8" fill="#b5cea8">0x08</text>
+    <text x="75" y="84" font-family="monospace" font-size="8" fill="#888">8 B</text>
+    <text x="120" y="84" font-family="monospace" font-size="8" fill="#7b8cff" font-weight="bold">jmpAddr</text>
+    <text x="200" y="84" font-family="monospace" font-size="7" fill="#555">Trampoline jump target</text>
+
+    <text x="22" y="100" font-family="monospace" font-size="8" fill="#b5cea8">0x10</text>
+    <text x="75" y="100" font-family="monospace" font-size="8" fill="#888">4 B</text>
+    <text x="120" y="100" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">sysNum</text>
+    <text x="200" y="100" font-family="monospace" font-size="7" fill="#555">Syscall number (SSN)</text>
+
+    <line x1="12" y1="110" x2="283" y2="110" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="147" y="126" text-anchor="middle" font-family="monospace" font-size="8" fill="#888">17 entries × 20 bytes =</text>
+    <text x="147" y="140" text-anchor="middle" font-family="monospace" font-size="10" fill="#a77de5" font-weight="bold" filter="url(#gl)">340 bytes total</text>
+
+    <line x1="12" y1="148" x2="283" y2="148" stroke="#1a1a3a" stroke-width="0.5"/>
+    <text x="147" y="164" text-anchor="middle" font-family="monospace" font-size="6" fill="#6a9955">NtAllocateVM · NtProtectVM · NtFreeVM · NtGetCtxThread · NtSetCtxThread</text>
+  </g>
+
+  <!-- ═══ ANALYSIS RESULT OUTPUT ═══ -->
+  <g transform="translate(30, 365)">
+    <rect width="840" height="105" rx="8" fill="#0a0a1a" stroke="#a77de5" stroke-width="1"/>
+    <!-- Window chrome -->
+    <rect width="840" height="22" rx="8" fill="#141422"/>
+    <circle cx="18" cy="11" r="4.5" fill="#ff5f57"/>
+    <circle cx="35" cy="11" r="4.5" fill="#febc2e"/>
+    <circle cx="52" cy="11" r="4.5" fill="#28c840"/>
+    <text x="420" y="15" text-anchor="middle" font-family="monospace" font-size="8" fill="#444">BUDAnalysisResult — Stage 3b Pipeline Output</text>
+
+    <!-- Result fields row 1 -->
+    <text x="15" y="42" font-family="monospace" font-size="8" fill="#666">bud_detected:</text>
+    <text x="115" y="42" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">True</text>
+    <text x="170" y="42" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="185" y="42" font-family="monospace" font-size="8" fill="#666">bud_version:</text>
+    <text x="275" y="42" font-family="monospace" font-size="8" fill="#ff6ec7" font-weight="bold">"4.9.1"</text>
+    <text x="340" y="42" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="355" y="42" font-family="monospace" font-size="8" fill="#666">struct_version:</text>
+    <text x="465" y="42" font-family="monospace" font-size="8" fill="#b5cea8" font-weight="bold">1</text>
+    <text x="500" y="42" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="515" y="42" font-family="monospace" font-size="8" fill="#666">confidence:</text>
+    <text x="600" y="42" font-family="monospace" font-size="8" fill="#fbbf24" font-weight="bold">0.90</text>
+
+    <!-- Result fields row 2 -->
+    <text x="15" y="62" font-family="monospace" font-size="8" fill="#666">syscall_api:</text>
+    <text x="105" y="62" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">True</text>
+    <text x="170" y="62" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="185" y="62" font-family="monospace" font-size="8" fill="#666">coverage:</text>
+    <text x="260" y="62" font-family="monospace" font-size="8" fill="#5eead4" font-weight="bold">17/17 (100%)</text>
+    <text x="380" y="62" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="395" y="62" font-family="monospace" font-size="8" fill="#666">alloc_memory:</text>
+    <text x="505" y="62" font-family="monospace" font-size="8" fill="#7b8cff" font-weight="bold">v2+</text>
+    <text x="545" y="62" font-family="monospace" font-size="8" fill="#555">│</text>
+    <text x="560" y="62" font-family="monospace" font-size="8" fill="#666">sleep_mask:</text>
+    <text x="645" y="62" font-family="monospace" font-size="8" fill="#a77de5" font-weight="bold">registered</text>
+
+    <!-- Schema cross-ref -->
+    <line x1="15" y1="72" x2="825" y2="72" stroke="#1a1a3a" stroke-width="0.5"/>
+    <rect x="15" y="78" width="810" height="18" rx="3" fill="#5eead408"/>
+    <text x="420" y="91" text-anchor="middle" font-family="monospace" font-size="8" fill="#5eead4">✓ Schema cross-reference: budVersion matches 4.9.1.json · No warnings · Pipeline enrichment complete</text>
+  </g>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <g transform="translate(30, 485)">
+    <rect width="840" height="50" rx="8" fill="#0d1117" stroke="url(#acG)" stroke-width="0.8" opacity="0.9"/>
+    <rect width="840" height="50" rx="8" fill="none" stroke="url(#acG)" stroke-width="1.5" opacity="0.15">
+      <animate attributeName="opacity" values="0.08;0.2;0.08" dur="3s" repeatCount="indefinite"/>
+    </rect>
+
+    <text x="70" y="22" text-anchor="middle" font-family="monospace" font-size="16" fill="#ff6ec7" font-weight="bold" filter="url(#gl)">4</text>
+    <text x="70" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Detection Steps</text>
+
+    <line x1="140" y1="8" x2="140" y2="42" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="210" y="22" text-anchor="middle" font-family="monospace" font-size="16" fill="#7b8cff" font-weight="bold" filter="url(#gl)">3</text>
+    <text x="210" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">BUD Versions</text>
+
+    <line x1="280" y1="8" x2="280" y2="42" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="350" y="22" text-anchor="middle" font-family="monospace" font-size="16" fill="#5eead4" font-weight="bold" filter="url(#gl)">17</text>
+    <text x="350" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Nt* Syscalls</text>
+
+    <line x1="420" y1="8" x2="420" y2="42" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="490" y="22" text-anchor="middle" font-family="monospace" font-size="16" fill="#a77de5" font-weight="bold" filter="url(#gl)">340</text>
+    <text x="490" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Bytes Scanned</text>
+
+    <line x1="560" y1="8" x2="560" y2="42" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="630" y="22" text-anchor="middle" font-family="monospace" font-size="16" fill="#fbbf24" font-weight="bold" filter="url(#gl)">0.90</text>
+    <text x="630" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Max Confidence</text>
+
+    <line x1="700" y1="8" x2="700" y2="42" stroke="#1a1a3a" stroke-width="0.5"/>
+
+    <text x="770" y="22" text-anchor="middle" font-family="monospace" font-size="14" fill="#5eead4" font-weight="bold" filter="url(#gl)">3b</text>
+    <text x="770" y="38" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">Pipeline Stage</text>
+  </g>
+</svg>

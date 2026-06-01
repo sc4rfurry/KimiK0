@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cs-aggregator"
+version = "5.2.0"
+description = "CobaltStrike Beacon Shellcode Aggregation & Dissection Engine — Version-adaptive payload parser with Surgery SDK for CS 4.9.1 through 4.12+"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "y4kuz4" }
+]
+requires-python = ">=3.11"
+keywords = ["cobaltstrike", "beacon", "payload", "dissector", "red-team", "udrl", "malware-analysis"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "rich>=13.0",
+    "yara-x>=1.0",
+    "capstone>=5.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/y4kuz4/KimiK0"
+"Bug Tracker" = "https://github.com/y4kuz4/KimiK0/issues"
+"Documentation" = "https://github.com/y4kuz4/KimiK0#readme"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "mypy>=1.0",
+]
+crossval = [
+    "pefile>=2023.2.7",
+    "dissect.cobaltstrike>=1.2.0",
+]
+analysis = [
+    "yara-x>=1.0",
+]
+all = [
+    "cs-aggregator[crossval]",
+    "cs-aggregator[analysis]",
+    "rich>=13.0",
+]
+
+[project.scripts]
+cs-aggregator = "cs_aggregator.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["cs_aggregator*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true
+disallow_untyped_defs = false

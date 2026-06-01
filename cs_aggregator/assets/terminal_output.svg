@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4"/><stop offset="25%" style="stop-color:#7b8cff"/>
+      <stop offset="50%" style="stop-color:#a77de5"/><stop offset="75%" style="stop-color:#d35fd6"/><stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <filter id="g"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="gr" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1a1a3a" stroke-width="0.3"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="680" fill="url(#bg)" rx="10"/>
+  <rect width="900" height="680" fill="url(#gr)" rx="10"/>
+  <rect x="1" y="1" width="898" height="678" fill="none" stroke="url(#ac)" stroke-width="1" rx="10" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="40" y="36" font-family="'Cascadia Code','SF Mono',monospace" font-size="14" fill="#ff6ec7" font-weight="bold">cs-aggregator v5.2.0</text>
+  <line x1="30" y1="48" x2="870" y2="48" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Analysis header -->
+  <text x="40" y="72" font-family="monospace" font-size="12" fill="#e0e0e0">Analyzing <tspan fill="#5eead4">309,248</tspan> byte payload...</text>
+  <text x="40" y="90" font-family="monospace" font-size="11" fill="#888">Plugins: <tspan fill="#a77de5">config_differ</tspan>, <tspan fill="#a77de5">entropy_analyzer</tspan>, <tspan fill="#a77de5">flow_analyzer</tspan>, <tspan fill="#a77de5">ioc_extractor</tspan>, <tspan fill="#a77de5">pe_analyzer</tspan>, <tspan fill="#a77de5">shellcode_fingerprinter</tspan></text>
+
+  <!-- Version detection -->
+  <text x="40" y="116" font-family="monospace" font-size="13" fill="#5eead4" font-weight="bold">[CS 4.9+]</text>
+  <text x="120" y="116" font-family="monospace" font-size="13" fill="#e0e0e0">stageless/x64 conf=<tspan fill="#5eead4" font-weight="bold">95%</tspan> 5 segments</text>
+  <text x="40" y="134" font-family="monospace" font-size="12" fill="#888">Pipeline confidence: <tspan fill="#5eead4" font-weight="bold">94%</tspan></text>
+
+  <line x1="30" y1="148" x2="870" y2="148" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Config section header -->
+  <text x="40" y="172" font-family="monospace" font-size="13" fill="#ff6ec7" font-weight="bold">◈ CONFIG EXTRACTION</text>
+  <text x="230" y="172" font-family="monospace" font-size="11" fill="#555">XOR 0x2e · TLV · 60+ settings decoded</text>
+  <line x1="40" y1="182" x2="860" y2="182" stroke="#555" stroke-width="0.5"/>
+
+  <!-- Config table -->
+  <g font-family="monospace" font-size="11">
+    <text x="60" y="202" fill="#888">SETTING_PROTOCOL</text><text x="360" y="202" fill="#5eead4">HTTPS (8)</text>
+    <text x="60" y="220" fill="#888">SETTING_PORT</text><text x="360" y="220" fill="#5eead4">443</text>
+    <text x="60" y="238" fill="#888">SETTING_SLEEPTIME</text><text x="360" y="238" fill="#fbbf24">60000</text><text x="430" y="238" fill="#555">ms</text>
+    <text x="60" y="256" fill="#888">SETTING_JITTER</text><text x="360" y="256" fill="#5eead4" font-weight="bold">37%</text>
+    <text x="60" y="274" fill="#888">SETTING_SYSCALL_METHOD</text><text x="360" y="274" fill="#5eead4" font-weight="bold">indirect (2)</text>
+    <text x="60" y="292" fill="#888">SETTING_GARGLE_NOOK</text><text x="360" y="292" fill="#5eead4">✓ enabled</text>
+    <text x="60" y="310" fill="#888">SETTING_CLEANUP</text><text x="360" y="310" fill="#5eead4">✓ enabled</text>
+    <text x="60" y="328" fill="#888">SETTING_CFG_CAUTION</text><text x="360" y="328" fill="#5eead4">✓ enabled</text>
+    <text x="60" y="346" fill="#888">SETTING_SPAWNTO_X64</text><text x="360" y="346" fill="#5eead4">%windir%\sysnative\dllhost.exe</text>
+    <text x="60" y="364" fill="#888">SETTING_PROCINJ_ALLOCATOR</text><text x="360" y="364" fill="#a77de5">NtMapViewOfSection (1)</text>
+    <text x="60" y="382" fill="#888">SETTING_DATA_STORE_SIZE</text><text x="360" y="382" fill="#f87171">0</text><text x="380" y="382" fill="#555">(disabled)</text>
+    <text x="60" y="400" fill="#888">SETTING_KILLDATE</text><text x="360" y="400" fill="#f87171">not set</text>
+  </g>
+
+  <line x1="30" y1="418" x2="870" y2="418" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Shellcode Fingerprinter -->
+  <text x="40" y="442" font-family="monospace" font-size="13" fill="#7b8cff" font-weight="bold">◆ SHELLCODE FINGERPRINT</text>
+  <line x1="40" y1="452" x2="860" y2="452" stroke="#555" stroke-width="0.5"/>
+  <g font-family="monospace" font-size="11">
+    <text x="60" y="470" fill="#555">Loader</text><text x="150" y="470" fill="#e0e0e0" font-weight="bold">CS Default Loader</text><text x="340" y="470" fill="#5eead4">0x4D5A4152</text><text x="440" y="470" fill="#555">(MZAR)</text>
+    <text x="60" y="488" fill="#555">Arch</text><text x="150" y="488" fill="#e0e0e0" font-weight="bold">64-bit</text><text x="220" y="488" fill="#555">REX.W prefix, SYSCALL</text>
+    <text x="60" y="506" fill="#555">Syscall</text><text x="150" y="506" fill="#5eead4" font-weight="bold">INDIRECT</text><text x="260" y="506" fill="#555">via byte scan</text>
+    <text x="60" y="524" fill="#555">Evasion</text><text x="150" y="524" fill="#5eead4">✓ SleepMask</text><text x="290" y="524" fill="#5eead4">✓ Cleanup</text><text x="410" y="524" fill="#5eead4">✓ CFG-Caution</text>
+    <text x="60" y="542" fill="#555">Memory</text><text x="150" y="542" fill="#e0e0e0">309,248 bytes</text><text x="310" y="542" fill="#555">loader:0x0-0x400</text>
+    <text x="60" y="560" fill="#555">PIC</text><text x="150" y="560" fill="#5eead4" font-weight="bold">✓ SAFE</text>
+  </g>
+
+  <line x1="30" y1="575" x2="870" y2="575" stroke="#333" stroke-width="0.5"/>
+
+  <!-- YARA Scanner -->
+  <text x="40" y="598" font-family="monospace" font-size="13" fill="#fbbf24" font-weight="bold">◈ YARA SCANNER</text>
+  <text x="210" y="598" font-family="monospace" font-size="11" fill="#e0e0e0">·  4 rules matched</text>
+  <text x="380" y="598" font-family="monospace" font-size="11" fill="#555">(0.003s)</text>
+  <line x1="40" y1="608" x2="860" y2="608" stroke="#555" stroke-width="0.5"/>
+  <g font-family="monospace" font-size="11">
+    <text x="60" y="626" fill="#f87171" font-weight="bold">HIGH</text><text x="110" y="626" fill="#e0e0e0">CS_Config_XOR_2E</text><text x="320" y="626" fill="#888">[config]</text><text x="400" y="626" fill="#555">T1573.001</text><text x="520" y="626" fill="#fbbf24">×3</text>
+    <text x="60" y="644" fill="#f87171" font-weight="bold">HIGH</text><text x="110" y="644" fill="#e0e0e0">CS_Reflective_Loader_Default</text><text x="320" y="644" fill="#888">[loader]</text><text x="400" y="644" fill="#555">T1620.001</text>
+    <text x="60" y="662" fill="#fbbf24" font-weight="bold"> MED</text><text x="110" y="662" fill="#e0e0e0">CS_Indirect_Syscall_Stub</text><text x="320" y="662" fill="#888">[syscall]</text><text x="400" y="662" fill="#555">T1106</text><text x="520" y="662" fill="#fbbf24">×2</text>
+  </g>
+</svg>

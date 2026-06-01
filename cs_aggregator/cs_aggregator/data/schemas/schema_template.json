@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "version": "template",
+    "description": "Template for creating new version schema files. Copy this file, rename to <version>.json, and fill in the values."
+  },
+  "tlvTypes": {},
+  "loaderSignatureHashes": [],
+  "loaderSignaturePatterns": {},
+  "configBlockHeuristics": {
+    "xorKeyLengths": [1, 4],
+    "knownKeys": [],
+    "searchRangeEndOffset": 512,
+    "sectionNames": [".data", ".rdata"],
+    "entropyThresholdLow": 5.5,
+    "entropyThresholdHigh": 7.8
+  },
+  "sleepMaskSignatures": {
+    "patterns": [],
+    "expectedSizeRange": [4096, 32768],
+    "exportNames": []
+  },
+  "budStructure": {
+    "version": null,
+    "fields": {}
+  },
+  "segmentBoundaryHints": {
+    "loaderMaxSize": 8192,
+    "loaderMinSize": 512,
+    "beaconDLLExpectedMinSize": 102400,
+    "beaconDLLExpectedMaxSize": 409600,
+    "postExSearchStartOffset": null
+  },
+  "peSectionExpectations": {
+    "expectedSections": [],
+    "entropyRangePerSection": {},
+    "anomalyThresholdEntropy": 7.5,
+    "anomalyThresholdVirtualSizeRatio": 3.0
+  }
+}

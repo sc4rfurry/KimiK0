@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "version": "4.10.x",
+    "description": "CobaltStrike 4.10.x — BREAKING: BeaconGate introduced, BUD v2 structures, sleep mask buffer 32KB",
+    "tlvHeaderSize": 6,
+    "tlvByteOrder": "big-endian",
+    "maxSettingID": 78,
+    "budVersion": 2,
+    "dataTypes": {
+      "1": "SHORT (uint16 BE, 2 bytes)",
+      "2": "INT (uint32 BE, 4 bytes)",
+      "3": "DATA (variable-length blob)"
+    }
+  },
+  "tlvTypes": {
+    "0x0001": "BeaconType",
+    "0x0002": "Port",
+    "0x0003": "SleepTime",
+    "0x0004": "MaxGetSize",
+    "0x0005": "Jitter",
+    "0x0006": "DNSIdle",
+    "0x0007": "DNSSleep",
+    "0x0008": "UserAgent",
+    "0x0009": "HTTPMethodPaths",
+    "0x000A": "C2Servers",
+    "0x000B": "PublicKey",
+    "0x000C": "Spawnto",
+    "0x000D": "PipeName",
+    "0x000E": "KillDate",
+    "0x000F": "TextSections",
+    "0x0010": "ProcessInject",
+    "0x0011": "ProcessInjectExecute",
+    "0x0012": "WatermarkHash",
+    "0x0013": "StageBlock",
+    "0x0014": "StageCleanUp",
+    "0x0016": "CFSCaution",
+    "0x0017": "HostHeader",
+    "0x0019": "ProxyConfigBlock",
+    "0x0020": "ExitFunction",
+    "0x0022": "HeaderConfig",
+    "0x0025": "SSHBlock",
+    "0x0026": "NameServer",
+    "0x0027": "PostExBlock",
+    "0x0028": "NamedPipeBlock",
+    "0x0029": "TCPBlock",
+    "0x002A": "SMBBlock",
+    "0x002B": "ExtendedFlags",
+    "0x002C": "BeaconGateConfig",
+    "0x002D": "SleepMaskAdvancedConfig"
+  },
+  "settingIDs": {
+    "76": "SETTING_HTTP_DATA_REQUIRED",
+    "77": "SETTING_BEACON_GATE",
+    "78": "SETTING_BEACON_GATE_CONFIG"
+  },
+  "settingTypes": {
+    "_note": "Inherits 1-75 from 4.9.1. Additional types for 76-78.",
+    "76": 1, "77": 3, "78": 3
+  },
+  "loaderSignatureHashes": [],
+  "loaderSignatureHashesNote": "Populate with SHA256 of known default 4.10 loader stubs from Arsenal Kit builds",
+  "loaderSignaturePatterns": {
+    "call_pop_rip_relative": "48 8b 05 ?? ?? ?? ?? 48 85 c0 74 ??",
+    "bof_memory_management": "48 89 5c 24 ?? 48 89 74 24 ?? 57 48 83 ec 20"
+  },
+  "configBlockHeuristics": {
+    "xorKeyLengths": [1, 4],
+    "knownKeys": ["2e2e2e2e"],
+    "searchRangeEndOffset": 1024,
+    "sectionNames": [".data", ".rdata", ".sleep", ".bg"],
+    "entropyThresholdLow": 5.5,
+    "entropyThresholdHigh": 7.8
+  },
+  "sleepMaskSignatures": {
+    "patterns": [
+      "48 89 5c 24 ?? 48 89 74 24 ?? 57 48 81 ec ?? ?? 00 00"
+    ],
+    "expectedSizeRange": [8192, 32768],
+    "exportNames": ["Mask", "Unmask", "BeaconGate"]
+  },
+  "budStructure": {
+    "version": 2,
+    "versionHex": "0x041000",
+    "reasonCode": 13,
+    "reasonCodeName": "DLL_BEACON_USER_DATA",
+    "breakingChanges": [
+      "ALLOCATED_MEMORY_REGION expanded with per-section tracking",
+      "BeaconGate context added to BUD structure",
+      "Sleep mask registration via BUD mandatory"
+    ],
+    "fields": {
+      "version": {"offset": 0, "size": 4, "desc": "BUD version as 0xMMmmPP"},
+      "allocatedMemoryRegions": {"offset": 8, "size": "variable", "desc": "Expanded ALLOCATED_MEMORY_REGION with section tracking"},
+      "allocatedMemorySections": {"offset": "variable", "size": "variable", "desc": "Per-section memory tracking"},
+      "sleepMaskFunction": {"offset": "variable", "size": 8, "desc": "Pointer to Mask() function"},
+      "unmaskFunction": {"offset": "variable", "size": 8, "desc": "Pointer to Unmask() function"},
+      "eventHandle": {"offset": "variable", "size": 8, "desc": "Sleep event handle"},
+      "beaconGateContext": {"offset": "variable", "size": "variable", "desc": "BeaconGate API proxy context"}
+    }
+  },
+  "segmentBoundaryHints": {
+    "loaderMaxSize": 16384,
+    "loaderMinSize": 1024,
+    "beaconDLLExpectedMinSize": 102400,
+    "beaconDLLExpectedMaxSize": 512000,
+    "postExSearchStartOffset": null
+  },
+  "peSectionExpectations": {
+    "expectedSections": [".text", ".rdata", ".data", ".reloc", ".rsrc", ".sleep", ".bg"],
+    "entropyRangePerSection": {
+      ".text": [5.0, 7.0],
+      ".rdata": [3.5, 6.0],
+      ".data": [3.0, 6.5],
+      ".reloc": [2.0, 4.5],
+      ".rsrc": [4.0, 7.5],
+      ".sleep": [4.0, 6.5],
+      ".bg": [4.0, 6.5]
+    },
+    "anomalyThresholdEntropy": 7.5,
+    "anomalyThresholdVirtualSizeRatio": 3.0
+  },
+  "postExHints": {
+    "expectedDLLs": ["mimikatz", "keylogger", "screenshot", "netview", "powerview", "execute-assembly"],
+    "embeddedInConfig": ["PostExBlock"],
+    "stringSearchPaths": [".data", ".rdata"],
+    "postexKitSectionPrefixes": [".pexe", ".rdll"]
+  },
+  "assemblyRules": {
+    "segmentOrder": ["SEG_LOADER_STUB", "SEG_BEACON_DLL", "SEG_SLEEP_MASK"],
+    "loaderAlignment": 4,
+    "dllAlignment": 512,
+    "sleepMaskAlignment": 4,
+    "sleepMaskBufferSize": 32768,
+    "allowLoaderReplacement": true,
+    "allowSleepMaskReplacement": true,
+    "allowConfigModification": true,
+    "notes": "CS 4.10.x: BeaconGate-aware assembly. Sleep mask buffer increased to 32KB. BUD v2 structures."
+  }
+}
